@@ -1,38 +1,52 @@
-<script>
-import 'primeicons/primeicons.css';
-import {reactive} from 'vue'
-
-export default {
-    // const viewingOpen = reactive(true)
-    data: () => ({
-        viewingOpen: true
-    })
-
-   
-}
-
-</script>
 
 <template>
-    <div class="header">
+    <div class="header" style="background-color: #2a2639;">
         <div class="headerTextFlex">
-            <h1 style="margin-left: 1rem;">ToDos</h1>
+            <h1 style="margin-left: 1rem;">ToDo's</h1>
             <i class="icon pi pi-ellipsis-h"></i>
         </div>
         <div class="header-button-flex">
-            <div :class="{'header-button-underlined' : viewingOpen}" class="header-button">
+            <div :class="{'header-button-underlined' : viewingOpen}" class="header-button" @click="$emit('setViewingOpen', true)">
                 <h3>Open</h3>
             </div>
-            <div :class="{'header-button-underlined' : !viewingOpen}" class="header-button">
+            <div :class="{'header-button-underlined' : !viewingOpen}" class="header-button" @click="$emit('setViewingOpen', false)">
                 <h3 >Closed</h3>
             </div>
+    
 
         </div>
     </div>
 </template>
 
+    <script>
+    
+    import 'primeicons/primeicons.css';
+    
+    export default {     
+        setup(){        
+        },       
+        props: {
+            viewingOpen: Boolean
+        },
+        
+        methods: {
+            
+        }
+    }
+    
+    </script>
+
 
 <style>
+.header{
+    width: 100vw;
+}
+h1{
+    color: white
+}
+h3{
+    color: white;
+}
 .headerTextFlex{
     display: flex;
     justify-content: space-between;
